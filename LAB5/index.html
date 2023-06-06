@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Laby5</title>
+ </head>
+<link rel="stylesheet" href="style.css">
+<body>
+<h1>Zadanie 1</h1>
+
+  <script type="text/javascript">
+
+
+    function tab() {
+    document.write("<table border=\"1\">");
+     
+    for (i=1; i<=10; i++)
+    {
+
+    document.write("<tr><td>" + i + "</td>");
+
+    for (j=1; j<=10; j++)
+    {
+
+    if (j != 1) {
+    document.write("<td>" + i*j + "</td>");
+    }
+
+
+    }
+    document.write("</tr>");
+    }
+    document.write("</table>");
+    }
+
+
+  </script>
+
+
+<script>tab();</script>
+
+<h1>Zadanie 2</h1>
+
+<p id="dane"></p>
+
+<script>
+let imiona = ["Jan", "Anna", "Piotr", "Katarzyna", "MarkE", "Ewa", "Paweł", "Małgorzata"];
+let nazwiska = ["Kowalski", "Nowka", "Wisniewski", "Dąbrowska", "Kamiński", "Lewandowska", "Zieliński", "Wójcik"];
+
+let liczbaRekordow = parseInt(prompt("Podaj liczbę rekordów do wygenerowania w zadaniu 2:"));
+
+let osoby = [];
+
+for(let i = 0; i < liczbaRekordow; i++) {
+    let osoba = {};
+    osoba.name = imiona[Math.floor(Math.random() * imiona.length)];
+    osoba.surname = nazwiska[Math.floor(Math.random() * nazwiska.length)];
+    osoba.age = Math.floor(Math.random() * (80 - 18 + 1)) + 18;
+    osoba.phone = Math.floor(Math.random() * (8000000 - 5000000 + 1)) + 5000000;
+    osoby.push(osoba);
+}
+
+let divDane = document.getElementById('dane');
+for(let i = 0; i < osoby.length; i++) {
+    divDane.innerHTML += "Imię: " + osoby[i].name + ", Nazwisko: " + osoby[i].surname + ", Wiek: " + osoby[i].age + ", Telefon: " + osoby[i].phone + "<br>";
+}
+</script>
+
+
+
+
+
+
+<h1>Zadanie 3</h1>
+
+Podaj swój PIN: <input id="pin" type="number"><br>
+<button onclick="zaloguj()">Zaloguj</button>
+
+<div id="bank"></div>
+
+<script src="bank.js"></script>
+
+
+
+
+
+
+</body>
+</html>
