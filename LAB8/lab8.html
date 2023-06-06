@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularz</title>
+    <style>
+        .validation-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm" onsubmit="return validateForm()">
+        Imię: <input type="text" id="name" required><span id="nameError" class="validation-message"></span><br>
+        Nazwisko: <input type="text" id="surname" required><span id="surnameError" class="validation-message"></span><br>
+        Email: <input type="email" id="email" required><span id="emailError" class="validation-message"></span><br>
+        Hasło: <input type="password" id="password" required minlength="8"><span id="passwordError" class="validation-message"></span><br>
+        Powtórz hasło: <input type="password" id="passwordConfirm" required><span id="passwordConfirmError" class="validation-message"></span><br>
+        Płeć: <input type="text" id="gender" required><span id="genderError" class="validation-message"></span><br>
+        Telefon: <input type="text" id="phone" required><span id="phoneError" class="validation-message"></span><br>
+        Data urodzenia: <input type="date" id="birthdate" required><span id="birthdateError" class="validation-message"></span><br>
+        Kraj: <input type="text" id="country" required onchange="toggleProvinceField()"><span id="countryError" class="validation-message"></span><br>
+        Województwo: <span id="provinceContainer"></span><br>
+        Adres zamieszkania: <input type="text" id="residenceAddress" disabled><br>
+        <input type="checkbox" id="sameAddress" checked onchange="toggleMailingAddress()"><label for="sameAddress">Adres korespondencyjny jest taki sam jak adres zamieszkania</label><br>
+        <div id="mailingAddressContainer" style="display: none;">
+            Adres korespondencyjny: <input type="text" id="mailingAddress" disabled><br>
+        </div>
+        <input type="submit" value="Zapisz">
+    </form>
+
+    <script>
+    function validateForm() {
+        let form = document.getElementById('myForm');
+        let password = document.getElementById('password');
+        let passwordConfirm = document.getElementById('passwordConfirm');
+        let birthdate = new Date(document.getElementById('birthdate').value);
+        let today = new Date();
+        let age = today.getFullYear() - birthdate.getFullYear();
+
+        if (password.value != passwordConfirm.value) {
+            document.getElementById('passwordConfirmError').textContent = "Hasła nie są zgodne.";
+            return false;
+        } else {
+            document.getElementById('passwordConfirmError').textContent = "";
+        }
+
+        if (age < 18) {
+            document.getElementById('birthdateError').textContent = "Musisz mieć co najmniej 18 lat.";
+            return false;
+        } else {
+            document.getElementById('birthdateError').textContent = "";
+        }
+        
+        return true;
+    }
+    
+    function toggleProvinceField() {
+        const countryField = document.getElementById('country');
+        const provinceContainer = document.getElementById('provinceContainer');
+        const residenceAddressField = document.getElementById('residenceAddress');
+        
+        if (countryField.value === 'Polska') {
+            provinceContainer.innerHTML = `
+                <select id="province" required>
+                    <option value="">Wybierz województwo</option>
+                    <option value="dolnośląskie">Dolnośląskie</option>
+                    <option value="kujawsko-pomorskie">Kujawsko-Pomorskie</option>
+                    <option value="lubelskie">Lubelskie</option>
+                    <option value="lubuskie">Lubuskie</option>
+                    <option value="łódzkie">Łódzkie</option>
+                    <option value="małopolskie">Małopolskie</option>
+                    <option value="mazowieckie">Mazowieckie</option>
+                    <option value="opolskie">Opolskie</option>
+                    <option value="podkarpackie">Podkarpackie</option>
+                    <option value="podlaskie">Podlaskie</option>
+                    <option value="pomorskie">Pomorskie</option>
+                    <option value="śląskie">Śląskie</option>
+                    <option value="świętokrzyskie">Świętokrzyskie</option>
+                    <option value="warmińsko-mazurskie">Warmińsko-Mazurskie</option>
+                    <option value="wielkopolskie">Wielkopolskie</option>
+                    <option value="zachodniopomorskie">Zachodniopomorskie</option>
+                </select>
+            `;
+        } else {
+            provinceContainer.innerHTML = '<input type="text" id="province" disabled>';
+        }
+        
+        residenceAddressField.disabled = countryField.value === '';
+    }
+    
+    function toggleMailingAddress() {
+        const mailingAddressContainer = document.getElementById('mailingAddressContainer');
+        mailingAddressContainer.style.display = document.getElementById('sameAddress').checked ? 'none' : 'block';
+        document.getElementById('mailingAddress').disabled = document.getElementById('sameAddress').checked;
+    }
+    </script>
+</body>
+</html>
