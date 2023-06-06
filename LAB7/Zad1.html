@@ -1,0 +1,66 @@
+<html>
+<head>
+
+
+<style>
+input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+</style>
+
+
+
+
+</head>
+
+
+<body>
+
+<h2>Formularz rejestracyjny</h2>
+
+<form>
+  <label for="fname">Imię:</label><br>
+  <input type="text" id="fname" name="fname" required><br>
+  <label for="lname">Nazwisko:</label><br>
+  <input type="text" id="lname" name="lname" required><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <label for="password">Hasło:</label><br>
+  <input type="password" id="password" name="password" minlength="8" required><br>
+  <label for="gender">Płeć:</label><br>
+  <input type="radio" id="male" name="gender" value="male" required>
+  <label for="male">Mężczyzna</label><br>
+  <input type="radio" id="female" name="gender" value="female" required>
+  <label for="female">Kobieta</label><br>
+  <label for="phone">Telefon:</label><br>
+  <input type="tel" id="phone" name="phone" required><br>
+  <label for="birthday">Data urodzenia:</label><br>
+  <input type="date" id="birthday" name="birthday" required><br>
+  <label for="country">Kraj:</label><br>
+  <select id="country" name="country" required>
+    <option value="">Wybiezr kraj.</option>
+    <option value="pl">Polska</option>
+    <option value="us">StanyZjednoczone</option>
+  </select><br>
+  <button type="submit">Zapisz</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Formularz</title>
+    <style>
+        .validation-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm" onsubmit="return validateForm()">
+        Imię: <input type="text" id="name" required><span id="nameError" class="validation-message"></span><br>
+        Nazwisko: <input type="text" id="surname" required><span id="surnameError" class="validation-message"></span><br>
+        Email: <input type="email" id="email" required><span id="emailError" class="validation-message"></span><br>
+        Hasło: <input type="password" id="password" required minlength="8"><span id="passwordError" class="validation-message"></span><br>
+        Powtórz hasło: <input type="password" id="passwordConfirm" required><span id="passwordConfirmError" class="validation-message"></span><br>
+        Płeć: <input type="text" id="gender" required><span id="genderError" class="validation-message"></span><br>
+        Telefon: <input type="tel" id="phone" required><span id="phoneError" class="validation-message"></span><br>
+        Data urodzenia: <input type="date" id="birthdate" required><span id="birthdateError" class="validation-message"></span><br>
+        Kraj: <input type="text" id="country" required><span id="countryError" class="validation-message"></span><br>
+        <input type="submit" value="Zapisz">
+    </form>
+
+    <script>
+    function validateForm() {
+        let form = document.getElementById('myForm');
+        let password = document.getElementById('password');
+        let passwordConfirm = document.getElementById('passwordConfirm');
+        let birthdate = new Date(document.getElementById('birthdate').value);
+        let today = new Date();
+        let age = today.getFullYear() - birthdate.getFullYear();
+
+        if (password.value != passwordConfirm.value) {
+            document.getElementById('passwordConfirmError').textContent = "Hasła nie są zgodne.";
+            return false;
+        } else {
+            document.getElementById('passwordConfirmError').textContent = "";
+        }
+
+        if (age < 18) {
+            document.getElementById('birthdateError').textContent = "Musisz mieć co najmniej 18 lat.";
+            return false;
+        } else {
+            document.getElementById('birthdateError').textContent = "";
+        }
+        
+        
+        return true;
+    }
+    </script>
+</body>
+</html
