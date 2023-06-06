@@ -1,0 +1,106 @@
+<html>
+    <!-- Zadanie 1 
+    <script>
+        let num1 = 20;
+        let num2 = 10;
+
+        console.log("Dodawanie: " + (num1 + num2));
+        console.log("Odejmowanie: " + (num1 - num2));
+        console.log("Mnożenie: " + (num1 * num2));
+        console.log("Dzielenie: " + (num1 / num2));
+
+
+
+
+
+        let num3 = 20;
+        let num4 = 10;
+
+        document.write("Dodawanie:" + (num3 + num4));
+        document.write("Odejmowanie:" + (num3 - num4));
+        document.write("Mnożenie:" + (num3 * num4));
+        document.write("Dzielenie:" + (num3 / num4));
+    </script>
+-->
+<!-- Zadanie 2 
+<p id="wynik"></p>
+
+    <script>
+        let a = 4;
+        let b = 3;
+        let c = 2;
+
+        let p = (a + b + c) / 2;
+        let pole = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        console.log('Pole trójkąta wynosi:' + pole);
+
+        document.write('Pole trójkąta wynosi:' + pole);
+        document.getElementById('wynik').innerHTML = "Pole trójkąta wynosi:" + pole;
+    </script>
+
+-->
+
+<!-- Zadanie 3 
+<p id="wynik"></p>
+
+<script>
+
+    let losowaLiczba = Math.ceil(Math.random() * 10);
+    let liczbaUzytkownika = prompt("Podaj liczbę od 1 do 10:");
+
+    if (liczbaUzytkownika == losowaLiczba) {
+        console.log("Dobra robota!!!!!!");
+        document.getElementById('wynik').innerHTML = "Dobra robota!!!!!!";
+    } else {
+        console.log("Nie udało się, prawidłowa liczba to: " + losowaLiczba);
+        document.getElementById('wynik').innerHTML = "Nie udało się, prawidłowa liczba to: " + losowaLiczba;
+}
+
+</script>
+
+-->
+
+<!-- Zadanie 4 
+
+<p id="naj"></p>
+
+
+<script>
+    let liczba1 = parseFloat(prompt("Podaj pierwszą liczbę:"));
+    let liczba2 = parseFloat(prompt("Podaj drugą liczbę:"));
+    let liczba3 = parseFloat(prompt("Podaj trzecią liczbę:"));
+
+    let najwieksza = Math.max(liczba1, liczba2, liczba3);
+
+    console.log("Największa liczba to: " + najwieksza);
+    document.getElementById('naj').innerHTML = "Największa liczba to: " + najwieksza;
+
+
+
+</script>
+-->
+
+
+
+<!-- Zadanie 5
+<script>
+
+function nwd(a, b) {
+    if (b === 0) {
+        return a;
+    } else {
+        return nwd(b, a % b);
+    }
+}
+
+let liczba1 = parseInt(prompt("Podaj pierwszą liczbę:"));
+let liczba2 = parseInt(prompt("Podaj drugą liczbę:"));
+
+console.log("Największy wsd to: " + nwd(liczba1, liczba2));
+</script>
+-->
+
+
+
+
+</html>
